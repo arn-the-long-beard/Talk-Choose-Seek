@@ -12,3 +12,8 @@
 ## Comments ###
 
 I am trying to fixe the redux persistency. It is not working if when selecting more results and Refresh the page
+
+
+## TODO ###
+
+==> complete the Write component and make it loading when the Speech Web API is not available
