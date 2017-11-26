@@ -19,7 +19,7 @@ export const preparePreload = (state) => {
   if (state.key && state.maxResults && state.api) {
     console.log('-----hydrate state---------' + state.key + '---' + state.maxResult)
     // let talkAndSeek = {state}
-    return {state}
+    return state
   } else return null
 }
 
