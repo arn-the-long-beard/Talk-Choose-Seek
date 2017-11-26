@@ -12,7 +12,8 @@ app.use(logger('dev'))
 // add the part for socket.io
 app.use(require('cookie-parser')())
 app.use(require('body-parser').urlencoded({ extended: true }))
-
+const routes = require('./server/routes')
+app.use('/api', routes)
 app.use('/static', express.static(path.join(__dirname, './static')))
 app.use(favicon(path.join(__dirname, 'static', 'favicon.ico')))
 app.use(ServerRenderer(Stats))
