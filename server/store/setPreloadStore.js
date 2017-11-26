@@ -16,9 +16,11 @@ export const checkCookie = (req, next) => {
 }
 // maxResults: state.maxResults
 export const preparePreload = (state) => {
-  if (state.key && state.maxResults && state.api) {
-    console.log('-----hydrate state---------' + state.key + '---' + state.maxResult)
-    // let talkAndSeek = {state}
-    return state
+  if (state.talk && state.seek && state.stepper) {
+    // console.log('-----hydrate state---------' + state.key + '---' + state.maxResult)
+    // let talkAndChooseAndSeek = {seek: { didInvalidate: true, maxResults: state.maxResults, asked: {key: state.key, api: state.api}, items: [], isRequesting: false, preloaded: true }, stepper: {key: state.key, api: state.api}}
+
+    let talkAndChooseAndSeek = state
+    return {talkAndChooseAndSeek}
   } else return null
 }

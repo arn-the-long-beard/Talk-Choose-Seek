@@ -19,7 +19,7 @@ const TCSStepConnector = ({stepIndex, getStepContent, handleNext, handlePrev, st
       <meta name='description' content='Talk to the platform what you want, where, and then seek' /></Helmet>
     <Stepper activeStep={stepIndex} connector={<ArrowForwardIcon />}>
       <Step>
-        <StepLabel>Tell me what your subject ?</StepLabel>
+        <StepLabel>Tell me what is your subject ?</StepLabel>
       </Step>
       <Step>
         <StepLabel>Where do you want me to search?</StepLabel>

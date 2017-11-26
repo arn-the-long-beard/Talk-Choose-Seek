@@ -115,3 +115,16 @@ export function ValidateResults (items) {
     dispatch(ValidateR(items))
   }
 }
+
+const updateIndex = (index) => {
+  return {
+    type: types.GO_TO,
+    index
+  }
+}
+
+export function goTo (index) {
+  return function (dispatch) {
+    dispatch(updateIndex(index))
+  }
+}

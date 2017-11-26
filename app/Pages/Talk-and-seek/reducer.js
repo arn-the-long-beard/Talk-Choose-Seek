@@ -18,7 +18,10 @@ function stepper (state = { stepIndex: 0, key: '', api: '', items: [], steps: [ 
       return {...state,
         stepIndex: state.stepIndex - 1
       }
-
+    case types.GO_TO:
+      return { ...state,
+        stepIndex: action.index
+      }
     case types.VALIDATE_KEY:
       return {...state,
         key: action.key,

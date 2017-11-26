@@ -30,8 +30,11 @@ export const start = () => {
 }
 
 export function startRecording () {
-  return function (dispatch) {
-    dispatch(start())
+  return function (dispatch, getState) {
+    const {talk} = getState().talkAndChooseAndSeek
+    if (!talk.record) {
+      dispatch(start())
+    }
   }
 }
 

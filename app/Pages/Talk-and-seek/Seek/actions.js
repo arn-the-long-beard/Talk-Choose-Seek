@@ -51,11 +51,12 @@ export const checkIfNeedAskAsync = (key, api) => {
 export const ask = (key, api) => {
   return (dispatch, getState) => {
     const {maxResults} = getState().talkAndChooseAndSeek.seek
+    const {talkAndChooseAndSeek} = getState()
     dispatch(askRequest(key))
     return Api.seek(key, maxResults, api).then(response => {
       if (response.success) {
         dispatch(askSuccess({key, maxResults, api}, response))
-        StateSaver.saveState({key, api, maxResults})
+        StateSaver.saveState({talkAndChooseAndSeek})
       } else {
         dispatch(askFailed(response))
       }
