@@ -1,0 +1,24 @@
+.content {
+  height:80vh;
+  width: 100%; /* or whatever is required */
+  //text-align: center !important; /* ensures the image is always in the h-middle */
+  //background: url('../images/background/connected.png') no-repeat fixed center !important;
+
+}
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: white;
+    text-align: center;
+}
+.container {
+  background-color :#015367 ;
+}
+.title {
+  padding: 5px;
+  color: #60B9CE ;
+}
+
