@@ -33,7 +33,7 @@ class Talk extends Component {
   start (e) {
     e.preventDefault()
     // if(!this.props.talk.record){
-      this.props.actions.startRecording()
+    this.props.actions.startRecording()
     // }
   }
 

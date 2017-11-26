@@ -52,10 +52,10 @@ class TalkAndChooseAndSeek extends React.Component {
 
     return (
       <TCSStepConnector stepIndex={stepIndex}
-                        getStepContent={this.getStepContent}
-                        handleNext={this.handleNext}
-                        handlePrev={this.handlePrev}
-                        steps={steps}
+        getStepContent={this.getStepContent}
+        handleNext={this.handleNext}
+        handlePrev={this.handlePrev}
+        steps={steps}
       />
     )
   }

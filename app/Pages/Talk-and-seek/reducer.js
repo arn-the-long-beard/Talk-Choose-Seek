@@ -4,7 +4,7 @@ import write from './Write/reducer'
 import {combineReducers} from 'redux'
 import * as types from './actionTypes'
 
-function stepper (state = { stepIndex: 0, key: '', api: '', items: [], steps: [ {index: 0, valide: false}, {index: 1, valide: false}, {index: 2, valide: false}]}, action) {
+function stepper (state = {stepIndex: 0, key: '', api: '', items: [], steps: [{index: 0, valide: false}, {index: 1, valide: false}, {index: 2, valide: false}]}, action) {
   switch (action.type) {
     // case types.RENDER_MICROPHONE:
     //   return {...state,

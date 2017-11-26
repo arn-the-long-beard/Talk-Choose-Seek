@@ -7,3 +7,8 @@
 ![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)
 
 ## Dependencies ###
+
+
+## Comments ###
+
+I am trying to fixe the redux persistency. It is not working if when selecting more results and Refresh the page

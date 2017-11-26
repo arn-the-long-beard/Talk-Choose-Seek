@@ -1,6 +1,7 @@
 import * as types from './actionTypes'
 import Api from './api'
 import StateSaver from '../../../store/stateSaver'
+import ServerAddress from '../../../Server/ServerAddress'
 export const askFailed = (data, json) => {
   return {
     type: types.ASK_FAILED,
@@ -35,6 +36,7 @@ export const NeedAskAsyncRequest = promise => {
 export const checkIfNeedAskAsync = (key, api) => {
   return function (dispatch, getState) {
     if (shouldAsk(key, api, getState())) {
+      ServerAddress.saveIp(getState().host.server)
       const {maxResults} = getState().talkAndChooseAndSeek.seek
       dispatch(NeedAskAsyncRequest(Api.seek(key, maxResults, api).then(response => {
         if (response.success) {
@@ -52,6 +54,8 @@ export const ask = (key, api) => {
   return (dispatch, getState) => {
     const {maxResults} = getState().talkAndChooseAndSeek.seek
     const {talkAndChooseAndSeek} = getState()
+    // Todo need to protected cookies
+    ServerAddress.saveIp(getState().host.server)
     dispatch(askRequest(key))
     return Api.seek(key, maxResults, api).then(response => {
       if (response.success) {
@@ -70,7 +74,7 @@ const shouldAsk = (key, api, state) => {
   const {seek} = state.talkAndChooseAndSeek
   if (key !== '' && api !== '' && seek.didInvalidate && !seek.isRequesting) {
     return true
-  } else if (key !== seek.asked.key || api !== seek.asked.api) {
+  } else if ((key !== seek.asked.key || api !== seek.asked.api) && !seek.isRequesting) {
     return true
   } else {
     return false
@@ -90,10 +94,18 @@ export const update = (value) => {
   }
 }
 export const updateMaxResults = (value) => {
-  return (dispatch) => {
+  return (dispatch, geState) => {
+    const {talkAndChooseAndSeek} = geState()
+    StateSaver.saveState({talkAndChooseAndSeek})
     return dispatch(update(value))
   }
 }
+// const save = () => {
+//   return (dispatch, geState) => {
+//     const {talkAndChooseAndSeek} = geState()
+//     StateSaver.saveState({talkAndChooseAndSeek})
+//   }
+// }
 
 function invalidateTotal () {
   return {

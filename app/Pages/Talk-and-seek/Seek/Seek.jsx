@@ -14,32 +14,29 @@ class Seek extends Component {
     super(props, context)
     this.onChange = this.onChange.bind(this)
     if (this.props.seek.preloaded) {
+      console.log('-------------Render sever--' + this.props.keySearch + '--' + this.props.api)
       this.props.actions.checkIfNeedAskAsync(this.props.keySearch, this.props.api)
     }
   }
-  // componentWillUpdate(nextProps, nextState){
-  //   if (nextProps.api !== this.props.api || nextProps.keySearch !== this.props.keySearch) {
-  //     this.props.actions.invalidate()
-  //   }
-  // }
-  // componentWillReceiveProps (nextProps) {
-  //
-  //   this.props.actions.checkIfNeedToAsk(this.props.keySearch, this.props.api)
-  // }
+  componentWillUpdate (nextProps, nextState) {
+    this.props.actions.checkIfNeedToAsk(this.props.keySearch, this.props.api)
+  }
+  componentWillReceiveProps (nextProps) {
+    this.props.actions.checkIfNeedToAsk(this.props.keySearch, this.props.api)
+  }
 
   componentDidMount () {
     this.props.actions.checkIfNeedToAsk(this.props.keySearch, this.props.api)
     console.log(StateSaver.getState())
   }
 
-  onChange (event) {
+  onChange (event, index, value) {
     event.preventDefault()
-    this.props.actions.updateMaxResults(event.target.value)
+    this.props.actions.updateMaxResults(value)
   }
 
   componentWillUnmount () {
-    // this.props.actions.invalidate()
-    // this.props.actions.invalidate()
+  // this.props.actions.save()
   }
   /**
    * Render the component.

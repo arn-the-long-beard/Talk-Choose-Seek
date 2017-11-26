@@ -10,11 +10,14 @@ class Api {
       .type('form')
       .send({info: {key, maxResults, api}})
       .then((res, err) => {
+        if (err) {
+          console.error(err)
+          return err
+        }
         if (res) {
           return res.body
         }
       })
-    // }
   }
 }
 

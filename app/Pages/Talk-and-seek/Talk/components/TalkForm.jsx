@@ -4,13 +4,13 @@ import MicrophoneOn from 'material-ui/svg-icons/av/mic'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import styles from '../styles/styles.scss'
 import {blue500} from 'material-ui/styles/colors'
-import {VoiceRecognition } from 'react-voice-components'
+import { VoiceRecognition } from 'react-voice-components'
 import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 const TalkForm = ({
                       record,
                     start, onEnd, errors, onResult, result, compatibility}) => (
-                      <section>
+                      <section className={styles.container}>
                         <h4 className={styles.titleSection}> Talk to me <CommunicationChatBubble color={blue500} /></h4>
                         <div>
                           {record && compatibility && (

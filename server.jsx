@@ -47,6 +47,7 @@ export default function serverRenderer ({ clientStats, serverStats }) {
       console.log('preload ')
       console.log(preload)
       if (preload) {
+        preload.host = { server: req.headers.host }
         store = configureStore(preload)
       } else {
         store = configureStore()

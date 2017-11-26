@@ -11,8 +11,10 @@ class StateSaver {
     expires.setDate(Date.now() + 1000 * 60 * 60 * 24 * 14)
     if (StateSaver.isStoreSaved()) {
       StateSaver.cleanState()
+      cookie.save('state', state, {path: '/', expires: expires})
+    } else {
+      cookie.save('state', state, {path: '/', expires: expires})
     }
-    cookie.save('state', state, {path: '/', expires: expires})
   }
   static isStoreSaved () {
     if (cookie.load('state')) {
