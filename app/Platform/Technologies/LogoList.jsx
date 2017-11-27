@@ -7,7 +7,7 @@ import standardLogo from './logos/standardjslogo.png'
 import uimaterialLogo from './logos/uimateriallogo.png'
 import webpackLogo from './logos/webpacklogo.png'
 import PropTypes from 'prop-types'
-import styles from './styles/list.scss'
+import styles from './styles/styles.scss'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 const LogoList = () => (<div className={styles.container}>
   <ul className={styles.list}>

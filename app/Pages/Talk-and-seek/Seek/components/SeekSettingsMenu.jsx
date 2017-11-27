@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
-import styles from '../styles/styles.scss'
+import styles from '../../../styles/styles.scss'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 

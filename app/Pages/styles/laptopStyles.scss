@@ -8,8 +8,8 @@
 .container{
   background:white;
   //background: transparent url('../images/background/soccer_game_background.jpeg') fixed center !important;
-  min-height:65vh;
-  max-height: 65vh;
+  min-height:55vh;
+  max-height: 55vh;
   overflow: hidden;
   width: 100%;
   display:block;
@@ -29,4 +29,41 @@
   width: 100%;
   max-width: 800px;
   margin: auto;
+}
+.titleSection {
+  display: inline-block;
+  color: #015367;
+}
+.result {
+  display: block;
+  margin-bottom: 10px;
+  color: #015367;
+}
+.label {
+  display: inline-block;
+  color: #015367;
+}
+.errors {
+  color: darkred;
+  font-weight: bold;
+}
+
+
+.titleResult{
+  text-align: center;
+  font-weight: bold;
+  font-size: 100%;
+  display: inline;
+}
+
+.result {
+  display: inline;
+  font-size: 70%;
+  margin-bottom: 10px;
+  color: #015367;
+}
+.list {
+  overflow: auto !important;
+  height: 35vh;
+  color: #015367;
 }

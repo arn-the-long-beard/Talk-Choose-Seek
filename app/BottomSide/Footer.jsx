@@ -7,7 +7,7 @@ class Footer extends Component {
   render () {
     return (<footer role='footer' className={styles.footer}> <LogoList />
       <div className={styles.container}>
-        <h3 className={styles.title}> Assignement for Convertelligence</h3>
+        <h3 className={styles.title}> Talk Choose Seek</h3>
         <p className={styles.title}> ©2017 Arnaud Menant. All rights reserved</p></div></footer>)
   }
 }

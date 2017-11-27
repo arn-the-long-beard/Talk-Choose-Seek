@@ -9,7 +9,7 @@ const About = () => (
       <title>About</title>
       <meta name='description' content='what the platform is about' />
     </Helmet>
-    <p className={styles.text}>This app listens to your words and seek for information in Wikipedia.</p>
+    <p className={styles.text}>This app listens to your words and seek for information in different platforms</p>
   </div>
 )
 About.contextTypes = {

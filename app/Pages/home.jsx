@@ -9,7 +9,7 @@ const Home = () => (
       <title>Home Page</title>
       <meta name='description' content='Home page of the platform' />
     </Helmet>
-    <p className={styles.text}>This is an assignement made by Arnaud Menant for Convertelligence</p>
+    <p className={styles.text}>This is a small project to test APIs</p>
   </div>
 )
 Home.contextTypes = {
