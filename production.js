@@ -10,7 +10,7 @@ const Stats = require(ClientStatsPath)
 const favicon = require('serve-favicon')
 const cors = require('cors')
 app.use(cors({
-  origin: 'http://polar-river-71117.herokuapp.com'
+  origin: 'https://polar-river-71117.herokuapp.com'
 }))
 app.use(logger('dev'))
 // add the part for socket.io
