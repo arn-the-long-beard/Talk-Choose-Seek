@@ -15,6 +15,7 @@ const ResultsSection = ({keySearch, api, results, update, message, isRequesting,
     <div><h4 className={styles.titleSection}> Seek for {keySearch} into {api} <Search color={blue500} /> {isRequesting &&
     <MiniLoader />}</h4></div>
     <SeekSettingsMenu maxResults={maxResults} onChange={onChange} />
+    <br/>
     {update &&
     <div className={styles.label}>
               Last update { parseInt(((new Date(Date.now()) - new Date(update)) / 1000), 10)} seconds ago.
