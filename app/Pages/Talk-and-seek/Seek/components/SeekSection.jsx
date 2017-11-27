@@ -15,7 +15,7 @@ const ResultsSection = ({keySearch, api, results, update, message, isRequesting,
   <section className={styles.container}>
     <div><h4 className={styles.titleSection}> Seek for {keySearch} into {api} <Search color={blue500} /> {isRequesting &&
     <MiniLoader />}</h4></div>
-    <SeekSettingsMenu maxResults={maxResults} onChange={onChange} />
+    {contentType === 'json' && <SeekSettingsMenu maxResults={maxResults} onChange={onChange} /> }
     <br />
     {update &&
     <div className={styles.label}>

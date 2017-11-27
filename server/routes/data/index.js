@@ -50,7 +50,7 @@ const AlreadySaved = (items, title, link) => {
   }
   return false
 }
-
+// TODO BEST UGLY CODE EVER
 const checkNode = (node, array) => {
   if (node.childNodes) {
     node.childNodes.forEach((i) => {
@@ -101,7 +101,7 @@ const askEcosia = (req, res) => {
         success: true,
         type: 'html',
         items: array,
-        message: 'we have found a page with the results'
+        message: 'we have found a page with ' + array.length + ' results'
       })
     })
     } catch (e) {

@@ -5,7 +5,6 @@ import styles from '../../../styles/styles.scss'
 import { List, ListItem } from 'material-ui/List'
 
 const ResultsHtmlList = ({results}) => (
-
   <List className={styles.list} >
     {results.map(function (item) {
       return (

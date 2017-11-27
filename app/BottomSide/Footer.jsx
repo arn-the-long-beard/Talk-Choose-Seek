@@ -2,7 +2,7 @@ import React, { Component} from 'react'
 import styles from './styles/footer.scss'
 import PropTypes from 'prop-types'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
-import LogoList from '../Platform/Technologies/LogoList'
+import LogoList from '../Platform/SearchEngine/LogoList'
 class Footer extends Component {
   render () {
     return (<footer role='footer' className={styles.footer}> <LogoList />

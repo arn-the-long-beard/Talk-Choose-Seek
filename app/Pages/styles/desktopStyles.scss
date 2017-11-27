@@ -8,7 +8,7 @@
 
 .container{
   background:white;
-height:62vh;
+height:60vh;
 
   overflow: hidden;
   width: 100%;
@@ -67,8 +67,7 @@ margin: auto;
   color: #015367;
 }
 .list {
-  overflow: auto !important;
+  overflow: auto;
   height: 45vh;
   color: #015367;
 }
-
