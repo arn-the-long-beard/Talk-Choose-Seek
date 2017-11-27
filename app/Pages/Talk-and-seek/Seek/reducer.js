@@ -10,6 +10,7 @@ export default function Seek (state = {items: [], asked: {}, maxResults: 10, isR
         errors: action.err,
         lastUpdated: action.receivedAt,
         items: [],
+
         preloaded: false,
         message: action.message
       }
@@ -23,6 +24,7 @@ export default function Seek (state = {items: [], asked: {}, maxResults: 10, isR
         isRequesting: false,
         didInvalidate: false,
         items: action.items,
+        contentType: action.contentType,
         errors: null,
         asked: action.asked,
         lastUpdated: action.receivedAt,
@@ -30,6 +32,18 @@ export default function Seek (state = {items: [], asked: {}, maxResults: 10, isR
         message: action.message,
         preloaded: false
       }
+    // case types.ASK_SUCCESS_PAGE:
+    //   return {...state,
+    //     isRequesting: false,
+    //     didInvalidate: false,
+    //     items:action.items,
+    //     errors: null,
+    //     asked: action.asked,
+    //     lastUpdated: action.receivedAt,
+    //     isFetching: false,
+    //     message: action.message,
+    //     preloaded: false
+    //   }
     case types.ASK_AWAIT:
       return {...state,
         isFetching: true,

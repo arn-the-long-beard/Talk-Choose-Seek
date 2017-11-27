@@ -71,18 +71,25 @@ export default function serverRenderer ({ clientStats, serverStats }) {
         } else {
           // It was in case I try to reload the state by server sendering ( F5) but not time to implement for the assignement
           console.log('there are few promises to solve')
-          Promise.all(promises)
-            .then(() => {
-              html = ReactDOMServer.renderToString(<MuiThemeProvider muiTheme={muiTheme}><Root store={store} Router={StaticRouter} location={req.url} context={context} /></MuiThemeProvider>)
-              console.log('Server rendering Number 2')
-              finalState = store.getState()
+          try {
+            Promise.all(promises)
+              .then(() => {
+                html = ReactDOMServer.renderToString(<MuiThemeProvider muiTheme={muiTheme}><Root store={store}
+                  Router={StaticRouter}
+                  location={req.url}
+                  context={context} /></MuiThemeProvider>)
+                console.log('Server rendering Number 2')
+                finalState = store.getState()
 
-              render(res, context, css, html, helmet, finalState)
-            })
-            .catch((e) => {
-              // handle errors here
-              throw new Error('Error server side' + e.message)
-            })
+                render(res, context, css, html, helmet, finalState)
+              })
+              .catch((e) => {
+                // handle errors here
+                throw new Error('Error server side' + e.message)
+              })
+          } catch (e) {
+            throw new Error('Error server side' + e.message)
+          }
         }
       })
     })

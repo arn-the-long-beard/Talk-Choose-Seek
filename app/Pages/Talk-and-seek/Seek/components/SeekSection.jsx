@@ -4,12 +4,13 @@ import MiniLoader from './../../../../components/Spinner/miniLoader'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import styles from '../../../styles/styles.scss'
 import Search from 'material-ui/svg-icons/action/search'
-import ResultsList from './SeekResults'
+import ResultsListJson from './SeekResultsJson'
+import ResultsListHtml from './SeekResultsHtml'
 import SeekSettingsMenu from './SeekSettingsMenu'
 import {blue500} from 'material-ui/styles/colors'
 
 // Todo when using external link, lost the reduxe state
-const ResultsSection = ({keySearch, api, results, update, message, isRequesting, maxResults, onChange}) => (
+const ResultsSection = ({keySearch, api, results, update, message, isRequesting, maxResults, onChange, contentType}) => (
 
   <section className={styles.container}>
     <div><h4 className={styles.titleSection}> Seek for {keySearch} into {api} <Search color={blue500} /> {isRequesting &&
@@ -22,7 +23,7 @@ const ResultsSection = ({keySearch, api, results, update, message, isRequesting,
     {' '}
     </div>}
     { message && <div className={styles.label}> {message} </div> }
-    <ResultsList results={results} />
+    {contentType === 'html' ? <ResultsListHtml results={results} /> : <ResultsListJson results={results} />}
   </section>)
 
 ResultsSection.propTypes = {

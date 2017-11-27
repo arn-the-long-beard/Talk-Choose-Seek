@@ -2,6 +2,7 @@ const express = require('express')
 const router = new express.Router()
 const wiki = require('wikijs').default
 const request = require('superagent')
+const parse5 = require('parse5')
 
 router.post('', (req, res) => {
   if (!req.body.info.api) {
@@ -12,11 +13,13 @@ router.post('', (req, res) => {
     })
   }
   switch (req.body.info.api) {
+    case 'wikipedia':
     case 'Wikipedia':
       {
         return askWikipedia(req, res)
       }
     case 'Ecosia':
+    case 'ecosia':
       {
         return askEcosia(req, res)
       }
@@ -31,16 +34,82 @@ router.post('', (req, res) => {
   }
 })
 
+// const IfAlreadySaved = (items, title, link) => {
+//   items.forEach((item) => {
+//     if (item.title === title && item.link === link) {
+//       return true
+//     }
+//   })
+//   return false
+// }
+const AlreadySaved = (items, title, link) => {
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].title === title && items[i].link === link) {
+      return true
+    }
+  }
+  return false
+}
+
+const checkNode = (node, array) => {
+  if (node.childNodes) {
+    node.childNodes.forEach((i) => {
+      if (node.attrs) {
+        node.attrs.forEach((at) => {
+          if (at.name === 'class' && at.value === 'result js-result card-mobile') {
+            if (node.childNodes) {
+              try {
+                let json = { title: (node.childNodes[1].childNodes[1].childNodes[0].value + node.childNodes[1].childNodes[2].value).trim(),
+                  link: node.childNodes[1].attrs[1].value.trim(),
+                  intro: node.childNodes[5].childNodes[2].value.trim()}
+
+                if (AlreadySaved(array, json.title, json.link)) {
+
+                } else {
+                  console.log(array.lastIndexOf(json))
+                  array.push(json)
+                }
+              } catch (e) {
+                console.log(e)
+              }
+            }
+          }
+        })
+      }
+      checkNode(i, array)
+    })
+  }
+}
+
 const askEcosia = (req, res) => {
-  request
+  return new Promise((resolve, reject) => {
+    try {
+      return request
     .get('https://www.ecosia.org/search?')
-    .query({ q: req.body.info.key }) // query string
+        .query({q: req.body.info.key})
+        .accept('application/json')
     .end((err, response) => {
       if (err) {
-        return res.status(409).json(err)
+        return reject(err)
       }
-      return res.status(200).json(response.body)
+
+      const array = []
+      const document = parse5.parse(response.text)
+      checkNode(document, array)
+// Serializes a document.
+      return resolve({
+        success: true,
+        type: 'html',
+        items: array,
+        message: 'we have found a page with the results'
+      })
     })
+    } catch (e) {
+      reject(e)
+    }
+  }).then((result) => {
+    return res.status(200).json(result)
+  })
 }
 
 const askWikipedia = (req, res) => {
@@ -79,6 +148,7 @@ const rejectIfRequestInvalid = (items, data, reject) => {
   if (data.results.length === 0) {
     return reject({
       success: false,
+      type: 'json',
       message: 'we have found ' + data.results.length + ' articles, please reformulate your request'
     })
   }
@@ -88,6 +158,7 @@ const resolveIfRequestsCompleted = (items, data, resolve) => {
     return resolve({
       success: true,
       items: items,
+      type: 'json',
       message: 'we have found ' + data.results.length + ' articles'
     })
   }

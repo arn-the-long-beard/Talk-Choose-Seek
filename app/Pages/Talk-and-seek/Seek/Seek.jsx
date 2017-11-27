@@ -38,7 +38,7 @@ class Seek extends Component {
   componentWillUnmount () {
     this.props.actions.invalidate()
   }
-  /**d
+  /**
    * Render the component.
    */
   render () {
@@ -51,6 +51,7 @@ class Seek extends Component {
         isRequesting={this.props.seek.isRequesting}
         maxResults={this.props.seek.maxResults}
         onChange={this.onChange}
+        contentType={this.props.seek.contentType}
       />)
   }
 }

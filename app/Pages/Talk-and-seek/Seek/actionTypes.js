@@ -1,5 +1,6 @@
 
 export const ASK_SUCCESS = 'ASK_SUCCESS'
+export const ASK_SUCCESS_PAGE = 'ASK_SUCCESS_PAGE'
 export const ASK_FAILED = 'ASK_FAILED'
 export const ASK_REQUEST = 'ASK_REQUEST'
 export const VALIDATE_DATA_SUCCESS = 'VALIDATE_DATA_SUCCESS'

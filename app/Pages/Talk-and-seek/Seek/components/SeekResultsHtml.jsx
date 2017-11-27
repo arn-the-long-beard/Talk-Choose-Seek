@@ -4,14 +4,15 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import styles from '../../../styles/styles.scss'
 import { List, ListItem } from 'material-ui/List'
 
-// Todo when using external link, lost the reduxe state
-const ResultsList = ({results}) => (
+const ResultsHtmlList = ({results}) => (
 
   <List className={styles.list} >
     {results.map(function (item) {
       return (
-        <ListItem disabled key={item.raw.pageid} ><div>
-          <a target='_blank' rel='noopener noreferrer' href={item.raw.fullurl} ><span><h4 className={styles.titleResult}>{item.raw.title}</h4>-{item.raw.pagelanguage}</span></a>
+        <ListItem disabled key={item.link} ><div>
+          <h4 className={styles.titleResult}>{item.title}</h4>
+          <br />
+          <a target='_blank' rel='noopener noreferrer' href={item.link} ><span>{item.link}</span></a>
           <br />
         </div>
           <p className={styles.result}>{item.intro}</p>
@@ -20,12 +21,12 @@ const ResultsList = ({results}) => (
     })}
   </List>)
 
-ResultsList.propTypes = {
+ResultsHtmlList.propTypes = {
   results: PropTypes.array.isRequired
 }
 
-ResultsList.contextTypes = {
+ResultsHtmlList.contextTypes = {
   insertCss: PropTypes.func
 }
 
-export default withStyles(styles)(ResultsList)
+export default withStyles(styles)(ResultsHtmlList)

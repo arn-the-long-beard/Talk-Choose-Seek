@@ -17,6 +17,7 @@ const Help = () => (
         <li>Seek the information</li>
       </ul>
       <p><b> Unfortunately, Speech API is only working with Google Chrome</b></p>
+      <p><b> Try Wikipedia or Ecosia</b></p>
     </div>
   </div>
 )

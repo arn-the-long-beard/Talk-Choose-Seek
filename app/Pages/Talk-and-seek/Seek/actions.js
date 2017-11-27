@@ -21,11 +21,22 @@ export const askSuccess = (asked, json) => {
   return {
     type: types.ASK_SUCCESS,
     items: json.items,
+    contentType: json.type,
     message: json.message,
     receivedAt: Date.now(),
     asked
   }
 }
+// export const askSuccessPage = (asked, json) => {
+//   return {
+//     type: types.ASK_SUCCESS_PAGE,
+//     items: json.items,
+//     contentType:json.type,
+//     message: json.message,
+//     receivedAt: Date.now(),
+//     asked
+//   }
+// }
 export const NeedAskAsyncRequest = promise => {
   return {
     type: types.ASK_AWAIT,
@@ -41,6 +52,16 @@ export const checkIfNeedAskAsync = (key, api) => {
       dispatch(NeedAskAsyncRequest(Api.seek(key, maxResults, api).then(response => {
         if (response.success) {
           dispatch(askSuccess({key, maxResults, api}, response))
+          // switch (response.type) {
+          //   case 'json':
+          //     dispatch(askSuccess({key, maxResults, api}, response))
+          //     break
+          //   case 'html':
+          //     dispatch(askSuccessPage({key, maxResults, api}, response))
+          //     break
+          //   default:
+          //     dispatch(askSuccess({key, maxResults, api}, response))
+          // }
         } else {
           dispatch(askFailed({info: {key, maxResults, api}}, response))
         }
@@ -60,6 +81,16 @@ export const ask = (key, api) => {
     return Api.seek(key, maxResults, api).then(response => {
       if (response.success) {
         dispatch(askSuccess({key, maxResults, api}, response))
+        // switch (response.type) {
+        //   case 'json':
+        //     dispatch(askSuccess({key, maxResults, api}, response))
+        //     break
+        //   case 'html':
+        //     dispatch(askSuccessPage({key, maxResults, api}, response))
+        //     break
+        //   default:
+        //     dispatch(askSuccess({key, maxResults, api}, response))
+        // }
         StateSaver.saveState({talkAndChooseAndSeek})
       } else {
         dispatch(askFailed(response))
