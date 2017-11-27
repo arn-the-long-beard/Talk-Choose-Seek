@@ -8,6 +8,10 @@ const ServerRendererPath = path.join(__dirname, './static/server.js')
 const ServerRenderer = require(ServerRendererPath).default
 const Stats = require(ClientStatsPath)
 const favicon = require('serve-favicon')
+const cors = require('cors')
+app.use(cors({
+  origin: 'http://polar-river-71117.herokuapp.com'
+}))
 app.use(logger('dev'))
 // add the part for socket.io
 app.use(require('cookie-parser')())

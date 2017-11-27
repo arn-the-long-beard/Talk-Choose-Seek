@@ -7,7 +7,7 @@ class Api {
   static seek (key, maxResults, api) {
     return request.post(url() + '/api/data')
       .set({'Content-Type': 'application/json'})
-      .set({ 'Access-Control-Allow-Origin': true })
+      // .set({ 'Access-Control-Allow-Origin': true })
       .type('form')
       .send({info: {key, maxResults, api}})
       .then((res, err) => {

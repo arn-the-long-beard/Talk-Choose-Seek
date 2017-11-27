@@ -31,6 +31,7 @@ export default function serverRenderer ({ clientStats, serverStats }) {
     const helmet = Helmet.renderStatic()
     let store = null
     let preload = null
+
     checkCookie(req, (err, cookie) => {
       if (err) {
         return res.status(409).json({
@@ -44,6 +45,8 @@ export default function serverRenderer ({ clientStats, serverStats }) {
         console.log('cookie load ')
         console.log(cookie)
       }
+      // console.log('environnement')
+      // console.log(process.env.NODE_ENV)
       console.log('preload ')
       console.log(preload)
       if (preload) {
