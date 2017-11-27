@@ -9,7 +9,7 @@ const ServerRenderer = require(ServerRendererPath).default
 const Stats = require(ClientStatsPath)
 const favicon = require('serve-favicon')
 const cors = require('cors')
-//TODO Change for your domain
+// TODO Change for your domain
 app.use(cors({
   origin: 'https://polar-river-71117.herokuapp.com'
 }))
