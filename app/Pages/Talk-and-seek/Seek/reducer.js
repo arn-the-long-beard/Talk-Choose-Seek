@@ -1,6 +1,6 @@
 import * as types from './actionTypes'
 
-export default function Seek (state = {items: [], asked: {}, maxResults: 10, isRequesting: false, preloaded: false, didInvalidate: true}, action) {
+export default function Seek (state = {items: [], asked: {}, maxResults: 10, isRequesting: false, errors: null, preloaded: false, didInvalidate: true}, action) {
   switch (action.type) {
     case types.ASK_FAILED:
       return {...state,
@@ -23,7 +23,7 @@ export default function Seek (state = {items: [], asked: {}, maxResults: 10, isR
         isRequesting: false,
         didInvalidate: false,
         items: action.items,
-        errors: {},
+        errors: null,
         asked: action.asked,
         lastUpdated: action.receivedAt,
         isFetching: false,

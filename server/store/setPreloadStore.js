@@ -20,7 +20,7 @@ export const preparePreload = (state) => {
     // console.log('-----hydrate state---------' + state.key + '---' + state.maxResult)
     // let talkAndChooseAndSeek = {seek: { didInvalidate: true, maxResults: state.maxResults, asked: {key: state.key, api: state.api}, items: [], isRequesting: false, preloaded: true }, stepper: {key: state.key, api: state.api}}
 
-    let talkAndChooseAndSeek = {seek: { didInvalidate: true, maxResults: state.talkAndChooseAndSeek.seek.maxResults, asked: state.talkAndChooseAndSeek.seek.asked, items: [], isRequesting: false, preloaded: true }, stepper: state.talkAndChooseAndSeek.stepper}
+    let talkAndChooseAndSeek = {seek: { didInvalidate: true, maxResults: state.talkAndChooseAndSeek.seek.maxResults, asked: state.talkAndChooseAndSeek.seek.asked, items: [], errors: null, isRequesting: false, preloaded: true }, stepper: state.talkAndChooseAndSeek.stepper}
     return {talkAndChooseAndSeek}
   } else return null
 }

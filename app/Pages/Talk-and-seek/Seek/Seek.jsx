@@ -36,9 +36,9 @@ class Seek extends Component {
   }
 
   componentWillUnmount () {
-  // this.props.actions.save()
+    this.props.actions.invalidate()
   }
-  /**
+  /**d
    * Render the component.
    */
   render () {

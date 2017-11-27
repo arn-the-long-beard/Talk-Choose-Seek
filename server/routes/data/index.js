@@ -1,6 +1,7 @@
 const express = require('express')
 const router = new express.Router()
 const wiki = require('wikijs').default
+const request = require('superagent')
 
 router.post('', (req, res) => {
   if (!req.body.info.api) {
@@ -15,15 +16,32 @@ router.post('', (req, res) => {
       {
         return askWikipedia(req, res)
       }
+    case 'Ecosia':
+      {
+        return askEcosia(req, res)
+      }
     default:
       {
         return res.status(409).json({
           success: false,
+          err: 'Platform not available',
           message: 'we did not find the platform you are asking for, please choose one in the list'
         })
       }
   }
 })
+
+const askEcosia = (req, res) => {
+  request
+    .get('https://www.ecosia.org/search?')
+    .query({ q: req.body.info.key }) // query string
+    .end((err, response) => {
+      if (err) {
+        return res.status(409).json(err)
+      }
+      return res.status(200).json(response.body)
+    })
+}
 
 const askWikipedia = (req, res) => {
   return wiki().search(req.body.info.key, req.body.info.maxResults).then((data) => {

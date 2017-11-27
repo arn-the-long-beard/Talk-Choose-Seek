@@ -72,12 +72,12 @@ export const ask = (key, api) => {
 
 const shouldAsk = (key, api, state) => {
   const {seek} = state.talkAndChooseAndSeek
-  if (key !== '' && api !== '' && seek.didInvalidate && !seek.isRequesting) {
+  if (key !== '' && api !== '' && seek.didInvalidate && !seek.isRequesting && !seek.errors) {
     return true
-  } else if ((key !== seek.asked.key || api !== seek.asked.api) && !seek.isRequesting) {
+  } else if ((key !== seek.asked.key || api !== seek.asked.api) && !seek.isRequesting && !seek.errors) {
     return true
   } else {
-    return false
+    return seek.didInvalidate
   }
 }
 export const checkIfNeedToAsk = (key, api) => {
