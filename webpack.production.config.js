@@ -53,7 +53,7 @@ module.exports = [
         }, {
           test: /\.(jpe?g|png|gif|svg)$/i,
           use: [
-            'url-loader?limit=10000',
+            'url-loader?limit=100000',
             'img-loader'
           ]
         }
@@ -128,7 +128,7 @@ module.exports = [
         {
           test: /\.(jpe?g|png|gif|svg)$/i,
           use: [
-            'url-loader?limit=10000',
+            'url-loader?limit=100000',
             'img-loader'
           ]
         }
