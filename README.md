@@ -10,7 +10,7 @@
 
  :warning: Works only on Chrome
  
-For now, only working with Wikipedia, but soon with :
+For now, only working with Wikipedia and [Ecosia](https://www.ecosia.org), but soon with :
 
 - [Steemit](https://developers.steem.io)
 - Google
