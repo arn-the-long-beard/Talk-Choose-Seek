@@ -22,12 +22,12 @@ class TalkAndChooseAndSeek extends React.Component {
     switch (stepIndex) {
       case 0:
         return (
-          <Talk validate={this.props.actions.ValidateKey} inValidate={this.props.actions.inValidateKey} />
+          <Talk validate={this.props.actions.ValidateKey} inValidate={this.props.actions.inValidateKey} start={false} />
         )
 
       case 1:
         return (
-          <Talk validate={this.props.actions.ValidateApi} inValidate={this.props.actions.inValidateApi} />
+          <Talk validate={this.props.actions.ValidateApi} inValidate={this.props.actions.inValidateApi} start />
         )
 
       case 2:

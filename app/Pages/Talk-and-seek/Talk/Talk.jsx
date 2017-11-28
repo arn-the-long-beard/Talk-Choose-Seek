@@ -37,8 +37,17 @@ class Talk extends Component {
     // }
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (!nextProps.talk.record && nextProps.start) {
+      nextProps.actions.startRecording()
+    }
+  }
+
   componentDidMount () {
     this.props.actions.checkCompatibility()
+    if (!this.props.talk.record && this.props.start) {
+      this.props.actions.startRecording()
+    }
   }
 
   render () {
@@ -59,7 +68,10 @@ Talk.contextTypes = {
   router: PropTypes.object.isRequired
 }
 Talk.propTypes = {
-  talk: PropTypes.object.isRequired
+  talk: PropTypes.object.isRequired,
+  validate: PropTypes.func.isRequired,
+  inValidate: PropTypes.func.isRequired,
+  start: PropTypes.bool.isRequired
 }
 function mapStateToProps (state) {
   const { talk } = state.talkAndChooseAndSeek
