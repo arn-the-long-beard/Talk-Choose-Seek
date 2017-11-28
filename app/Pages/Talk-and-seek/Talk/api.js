@@ -7,9 +7,10 @@ class Api {
       } else if (data === '') {
         return resolve({success: false, message: 'no transcription returned'})
       } else {
-        let n = data.split(' ')
-
-        let key = n[n.length - 1]
+        // let n = data.split(' ')
+        //
+        // let key = n[n.length - 1]
+        let key = data
         return resolve({success: true, message: 'keyword valid and extracted', data, key})
       }
     })
