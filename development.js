@@ -52,6 +52,6 @@ http2.createServer(options, app)
 */
 
 http.createServer(app)
-  .listen(3000, '0.0.0.0', () => {
-    console.log('talk-and-seek is listening on http://localhost:3000')
+  .listen(5000, '0.0.0.0', () => {
+    console.log('talk-and-seek is listening on http://localhost:5000')
   })
