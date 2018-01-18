@@ -24,7 +24,7 @@ app.use(favicon(path.join(__dirname, 'static', 'favicon.ico')))
 app.use(ServerRenderer(Stats))
 app.listen(process.env.PORT || 5000)
 
-//TODO add the routes
+// TODO add the routes
 
 // TODO buy a certified certificat for the ssl
 
